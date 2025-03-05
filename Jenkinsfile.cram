@@ -1,0 +1,19 @@
+pipeline {
+    agent none
+    parameters {
+        string(name: 'rpdu_outlet_id', defaultValue: '2', description: 'Set the RPDU outlet ID to control the power supply of DUT')
+        string(name: 'fw_url', defaultValue:'',  description: 'Set the FW download URL for this cram test') 
+    }
+
+    stages {
+        stage('cram_test') {
+            agent {
+                label 'gtk'
+            }
+            steps {
+		echo "cram only"
+            }
+        }
+    }
+}
+
