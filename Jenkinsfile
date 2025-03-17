@@ -10,7 +10,7 @@ pipeline {
         
         stage('check') {
             agent {
-                label 'test'
+                label 'cram_pc1'
             }
             stages {
                 stage('cppcheck') {
@@ -27,7 +27,7 @@ pipeline {
         }
         stage('cram_test') {
             agent {
-                label 'test'
+                label 'cram_pc1'
             }
             when { expression { params.skip_test != true } }
             steps {
