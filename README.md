@@ -11,27 +11,27 @@ markdown
 ├── config.sh
 ├── docker_ats/
 ├── docker_lan/
-└── docker_wts/
+└── docker_wan/
 
 ```
 
 ---
 
-## 1. Configure `config.sh`
+# 1. Configure `config.sh`
 
 The network configuration depends on how many physical NICs the Host PC has.
 
 ---
 
-### Scenario A — Host PC has only 1 NIC (Using a Switch + VLAN)
+## Scenario A — Host PC has only 1 NIC (Using a Switch + VLAN)
 
 Topology:
 
 ```
 
 HOST PC ──[Switch]── WAN (DUT)
-├─ LAN (DUT)
-└─ Internet
+                  ├─ LAN (DUT)
+                  └─ Internet
 
 ````
 
@@ -46,12 +46,12 @@ wan_interface='enp3s0f1'   # Same physical NIC
 
 lan_vlan_id='20'          # VLAN for DUT LAN
 wan_vlan_id='30'          # VLAN for DUT WAN
-backup_vlan_id='99'       # Backup / management VLAN
+backup_vlan_id='99'       # Backup
 ````
 
 ---
 
-### Scenario B — Host PC has 3 NICs (No Switch)
+## Scenario B — Host PC has 3 NICs (No Switch)
 
 Topology:
 
@@ -61,7 +61,7 @@ HOST PC ── Internet
         └─ LAN (DUT)
 ```
 
-Each DUT port and ATS uses a dedicated NIC.
+Each DUT port and HOST PC uses a dedicated NIC.
 
 Edit `config.sh`:
 
@@ -77,7 +77,7 @@ backup_vlan_id='99'       # Used on ats_interface
 
 ---
 
-## 2. Setup Host Interfaces
+# 2. Setup Host Interfaces
 
 Run the following scripts in order:
 
@@ -100,7 +100,7 @@ Descriptions:
 
 ---
 
-## 3. Test Case Location
+# 3. Test Case Location
 
 Place test cases under:
 
@@ -116,7 +116,7 @@ Example:
 
 ---
 
-## 4. Execute Test Cases
+# 4. Execute Test Cases
 
 Check the execution script:
 
@@ -140,7 +140,7 @@ Explanation:
 
 ---
 
-## 5. Test Reports
+# 5. Test Reports
 
 Reports are generated in:
 
@@ -152,7 +152,7 @@ The report directory is defined inside `test.sh`.
 
 ---
 
-## 6. Full Test Flow
+# 6. Full Test Flow
 
 ```
 1. Setup Host PC network
@@ -160,6 +160,4 @@ The report directory is defined inside `test.sh`.
 3. ./interface_vlan_set.sh        # Create VLANs
 4. ./start_env.sh                 # Start Docker environment
 5. ./robot_test/execute_test.sh   # Run tests
-```
-
 ```
