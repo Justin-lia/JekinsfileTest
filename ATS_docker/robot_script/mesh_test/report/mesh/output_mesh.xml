@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4 (Python 3.12.3 on linux)" generated="2026-01-12T07:41:51.125962" rpa="false" schemaversion="5">
+<suite id="s1" name="01-Mesh pre set" source="/workspace/tests/robot_script/mesh_test/test_suites/Mesh/01-Mesh_pre_set.robot">
+<test id="s1-t1" name="Agent roaming test" line="19">
+<kw name="Agent roaming">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-01-12T07:41:51.443201" level="INFO">${DUT_MAC} = A8:C2:46:3D:39:68</msg>
+<var>${DUT_MAC}</var>
+<arg>A8:C2:46:3D:39:68</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-01-12T07:41:51.442899" elapsed="0.000340"/>
+</kw>
+<kw name="Check Agent status">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-12T07:41:51.444089" level="INFO">Agent : A8:C2:46:3D:39:68</msg>
+<arg>Agent : ${target_mac}</arg>
+<arg>INFO</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-12T07:41:51.443753" elapsed="0.000390"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:41:51.444266" elapsed="0.000332"/>
+</kw>
+<kw name="get mesh topology from ssh">
+<kw name="cli_ssh" owner="telnet_ssh_sample">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${DEVICES.${Device}.ip}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:41:51.445460" elapsed="0.000899"/>
+</kw>
+<kw name="Open Connection" owner="SSHLibrary">
+<arg>${DEVICES.${Device}.ip}</arg>
+<arg>timeout=60</arg>
+<arg>port=${DEVICES.${Device}.port}</arg>
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<status status="PASS" start="2026-01-12T07:41:51.446605" elapsed="0.001480"/>
+</kw>
+<kw name="Login" owner="SSHLibrary">
+<msg time="2026-01-12T07:41:51.449400" level="INFO">Logging into '192.168.1.1:22' as 'root'.</msg>
+<msg time="2026-01-12T07:41:52.789118" level="INFO">Read output: 
+
+BusyBox v1.36.1 (2025-10-23 08:03:14 UTC) built-in shell (ash)
+
+     MM           NM                    MMMMMMM          M       M
+   $MMMMM        MMMMM                MMMMMMMMMMM      MMM     MMM
+  MMMMMMMM     MM MMMMM.              MMMMM:MMMMMM:   MMMM   MMMMM
+MMMM= MMMMMM  MMM   MMMM       MMMMM   MMMM  MMMMMM   MMMM  MMMMM'
+MMMM=  MMMMM MMMM    MM       MMMMM    MMMM    MMMM   MMMMNMMMMM
+MMMM=   MMMM  MMMMM          MMMMM     MMMM    MMMM   MMMMMMMM
+MMMM=   MMMM   MMMMMM       MMMMM      MMMM    MMMM   MMMMMMMMM
+MMMM=   MMMM     MMMMM,    NMMMMMMMM   MMMM    MMMM   MMMMMMMMMMM
+MMMM=   MMMM      MMMMMM   MMMMMMMM    MMMM    MMMM   MMMM  MMMMMM
+MMMM=   MMMM   MM    MMMM    MMMM      MMMM    MMMM   MMMM    MMMM
+MMMM$ ,MMMMM  MMMMM  MMMM    MMM       MMMM   MMMMM   MMMM    MMMM
+  MMMMMMM:      MMMMMMM     M         MMMMMMMMMMMM  MMMMMMM MMMMMMM
+    MMMMMM       MMMMN     M           MMMMMMMMM      MMMM    MMMM
+     MMMM          M                    MMMMMMM        M       M
+       M
+ ---------------------------------------------------------------
+   For those about to rock... OpenWrt SNAPSHOT, 13.0.501.665
+ ---------------------------------------------------------------
+=== WARNING! =====================================
+There is no root password defined on this device!
+Use the "passwd" command to set up a new password
+in order to prevent unauthorized SSH logins.
+--------------------------------------------------
+root@WNRFQQ-112BE-998:~#</msg>
+<arg>${DEVICES.${Device}.user_name}</arg>
+<arg>${EMPTY}</arg>
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<status status="PASS" start="2026-01-12T07:41:51.448215" elapsed="1.341016"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Set Client Configuration" owner="SSHLibrary">
+<arg>prompt=${prompt}</arg>
+<doc>Update the `configuration` of the current connection.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.790231" elapsed="0.000199"/>
+</kw>
+<arg>'${prompt}'!=''</arg>
+<arg>SSHLibrary.Set Client Configuration</arg>
+<arg>prompt=${prompt}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.789443" elapsed="0.001050"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Set Client Configuration" owner="SSHLibrary">
+<arg>timeout=${timeout}</arg>
+<doc>Update the `configuration` of the current connection.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.790963" elapsed="0.000172"/>
+</kw>
+<arg>'${timeout}'!=''</arg>
+<arg>SSHLibrary.Set Client Configuration</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.790619" elapsed="0.000575"/>
+</kw>
+<kw name="Execute Command" owner="SSHLibrary">
+<msg time="2026-01-12T07:41:52.791487" level="INFO">Executing command 'cat /tmp/.mesh_topo_info'.</msg>
+<msg time="2026-01-12T07:41:52.826253" level="INFO">Command exited with return code 0.</msg>
+<msg time="2026-01-12T07:41:52.826411" level="INFO">${result} = { "LegacyDevices": [ { "Name": "GTK-GL552VW", "DefinedName": "", "IPv4": "192.168.1.108", "Interface": "eth1", "Mac": "38:D5:47:39:EE:19", "medtype": "ETHER" } ], "Name": "WNRFQQ-112BE-998", "DefinedN...</msg>
+<var>${result}</var>
+<arg>${Command}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.791309" elapsed="0.035133"/>
+</kw>
+<kw name="Close All Connections" owner="SSHLibrary">
+<doc>Closes all open connections.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.826602" elapsed="0.000355"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-12T07:41:52.827397" level="INFO">{ "LegacyDevices": [ { "Name": "GTK-GL552VW", "DefinedName": "", "IPv4": "192.168.1.108", "Interface": "eth1", "Mac": "38:D5:47:39:EE:19", "medtype": "ETHER" } ], "Name": "WNRFQQ-112BE-998", "DefinedName": "", "Mode": "Controller", "Mac": "A8:C2:46:3D:39:99", "IPv4": "192.168.1.1", "Upstream_device": "", "DB_entries": 1, "DB": [ { "Name": "WNRFQQ-112BE-968", "DefinedName": "", "Mode": "Agent", "Mac": "A8:C2:46:3D:39:68", "IPv4": "192.168.1.167", "Hops": 1, "Connect": [ { "ifname": "eth1", "DefinedName": "", "medtype": "ETHER", "assoc_mac": "A8:C2:46:3D:39:69", "rssi": "0", "channel": "18599", "messageID": 4992, "direct": "Yes", "legacyBridge": "Yes", "Role": "Agent" } ], "Upstream_device": "A8:C2:46:3D:39:99", "LegacyDevices": [ ] } ] }</msg>
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.827132" elapsed="0.000315"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2026-01-12T07:41:52.827504" elapsed="0.000059"/>
+</return>
+<msg time="2026-01-12T07:41:52.827710" level="INFO">${ssh_result} = { "LegacyDevices": [ { "Name": "GTK-GL552VW", "DefinedName": "", "IPv4": "192.168.1.108", "Interface": "eth1", "Mac": "38:D5:47:39:EE:19", "medtype": "ETHER" } ], "Name": "WNRFQQ-112BE-998", "DefinedN...</msg>
+<var>${ssh_result}</var>
+<arg>DUT_LAN_SSH</arg>
+<arg>cat /tmp/.mesh_topo_info</arg>
+<arg>60</arg>
+<arg>root@WNRFQQ-112BE</arg>
+<status status="PASS" start="2026-01-12T07:41:51.445208" elapsed="1.382529"/>
+</kw>
+<return>
+<value>${ssh_result}</value>
+<status status="PASS" start="2026-01-12T07:41:52.827795" elapsed="0.000038"/>
+</return>
+<msg time="2026-01-12T07:41:52.827976" level="INFO">${mesh_topology_json} = { "LegacyDevices": [ { "Name": "GTK-GL552VW", "DefinedName": "", "IPv4": "192.168.1.108", "Interface": "eth1", "Mac": "38:D5:47:39:EE:19", "medtype": "ETHER" } ], "Name": "WNRFQQ-112BE-998", "DefinedN...</msg>
+<var>${mesh_topology_json}</var>
+<doc>Login to DUT and cat /tmp/.mesh_topo_info</doc>
+<status status="PASS" start="2026-01-12T07:41:51.444883" elapsed="1.383120"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-01-12T07:41:52.828509" level="INFO">${data} = {'LegacyDevices': [{'Name': 'GTK-GL552VW', 'DefinedName': '', 'IPv4': '192.168.1.108', 'Interface': 'eth1', 'Mac': '38:D5:47:39:EE:19', 'medtype': 'ETHER'}], 'Name': 'WNRFQQ-112BE-998', 'DefinedName':...</msg>
+<var>${data}</var>
+<arg>json.loads('''${mesh_topology_json}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.828114" elapsed="0.000493"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-01-12T07:41:52.829263" level="INFO">${result} = ['A8:C2:46:3D:39:99']</msg>
+<var>${result}</var>
+<arg>[item['Upstream_device'] for item in $data['DB'] if item['Mac'] == '${target_mac}']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.828785" elapsed="0.000509"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Get From List" owner="Collections">
+<arg>${result}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.829687" elapsed="0.000154"/>
+</kw>
+<msg time="2026-01-12T07:41:52.829955" level="INFO">${status} = PASS</msg>
+<msg time="2026-01-12T07:41:52.829997" level="INFO">${value} = A8:C2:46:3D:39:99</msg>
+<var>${status}</var>
+<var>${value}</var>
+<arg>Get From List</arg>
+<arg>${result}</arg>
+<arg>0</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.829418" elapsed="0.000602"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-01-12T07:41:52.830591" level="INFO">${upstream} = A8:C2:46:3D:39:99</msg>
+<var>${upstream}</var>
+<arg>${value}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.830303" elapsed="0.000318"/>
+</kw>
+<status status="PASS" start="2026-01-12T07:41:52.830116" elapsed="0.000563"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${upstream}</var>
+<arg>FAIL</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-01-12T07:41:52.830828" elapsed="0.000052"/>
+</kw>
+<status status="NOT RUN" start="2026-01-12T07:41:52.830721" elapsed="0.000215"/>
+</branch>
+<status status="PASS" start="2026-01-12T07:41:52.830092" elapsed="0.000878"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-12T07:41:55.832152" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-12T07:41:52.831064" elapsed="3.001189"/>
+</kw>
+<return>
+<value>${upstream}</value>
+<status status="PASS" start="2026-01-12T07:41:55.832331" elapsed="0.000054"/>
+</return>
+<msg time="2026-01-12T07:41:55.832548" level="INFO">${agent1_upstream} = A8:C2:46:3D:39:99</msg>
+<var>${agent1_upstream}</var>
+<arg>${DUT_MAC}</arg>
+<doc>1.Input Agent mac
+2. Output Connect mac band
+example:
+Check Agent status  E4:C7:67:8A:8F:36
+return  10:7C:61:C0:BF:E2</doc>
+<status status="PASS" start="2026-01-12T07:41:51.443478" elapsed="4.389098"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Upstream is: ${agent1_upstream}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.832723" elapsed="0.000424"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-01-12T07:41:55.834242" level="INFO">${ATT1_Value} = 0</msg>
+<var>${ATT1_Value}</var>
+<arg>${0}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.833423" elapsed="0.000848"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-01-12T07:41:55.835033" level="INFO">${ATT2_Value} = 0</msg>
+<var>${ATT2_Value}</var>
+<arg>${0}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.834391" elapsed="0.000671"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>get ATT1 value</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.835180" elapsed="0.000261"/>
+</kw>
+<kw name="get ATT value">
+<return>
+<value>50</value>
+<status status="PASS" start="2026-01-12T07:41:55.836012" elapsed="0.000053"/>
+</return>
+<msg time="2026-01-12T07:41:55.836178" level="INFO">${ATT1_value} = 50</msg>
+<var>${ATT1_value}</var>
+<arg>ATT1</arg>
+<status status="PASS" start="2026-01-12T07:41:55.835682" elapsed="0.000521"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>get ATT1 value is ${ATT1_value}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.836313" elapsed="0.000262"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-01-12T07:41:55.837188" level="INFO">${ATT1_value} = 51</msg>
+<var>${ATT1_value}</var>
+<arg>${ATT1_Value} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.836844" elapsed="0.000373"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Setup ATT1 to ${ATT1_value}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.837326" elapsed="0.000265"/>
+</kw>
+<kw name="set ATT value">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-01-12T07:41:55.838500" level="INFO">${set_ATT_value} = 56</msg>
+<var>${set_ATT_value}</var>
+<arg>${set_ATT_value} + 5</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.838215" elapsed="0.000313"/>
+</kw>
+<return>
+<value>${set_ATT_value}</value>
+<status status="PASS" start="2026-01-12T07:41:55.838580" elapsed="0.000035"/>
+</return>
+<arg>ATT1</arg>
+<arg>${ATT1_value}</arg>
+<status status="PASS" start="2026-01-12T07:41:55.837848" elapsed="0.000860"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>get ATT2 value</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.838814" elapsed="0.000303"/>
+</kw>
+<kw name="get ATT value">
+<return>
+<value>50</value>
+<status status="PASS" start="2026-01-12T07:41:55.839719" elapsed="0.000035"/>
+</return>
+<msg time="2026-01-12T07:41:55.839850" level="INFO">${ATT2_value} = 50</msg>
+<var>${ATT2_value}</var>
+<arg>ATT2</arg>
+<status status="PASS" start="2026-01-12T07:41:55.839414" elapsed="0.000500"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>get ATT2 value is ${ATT2_value}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.840110" elapsed="0.000425"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-01-12T07:41:55.841213" level="INFO">${ATT2_value} = 51</msg>
+<var>${ATT2_value}</var>
+<arg>${ATT2_Value} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.840835" elapsed="0.000406"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Setup ATT2 to ${ATT2_value}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.841353" elapsed="0.000268"/>
+</kw>
+<kw name="set ATT value">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-01-12T07:41:55.842489" level="INFO">${set_ATT_value} = 56</msg>
+<var>${set_ATT_value}</var>
+<arg>${set_ATT_value} + 5</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.842190" elapsed="0.000329"/>
+</kw>
+<return>
+<value>${set_ATT_value}</value>
+<status status="PASS" start="2026-01-12T07:41:55.842575" elapsed="0.000036"/>
+</return>
+<arg>ATT2</arg>
+<arg>${ATT2_value}</arg>
+<status status="PASS" start="2026-01-12T07:41:55.841906" elapsed="0.000804"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Wait 60s to roaming</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.842825" elapsed="0.000310"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-12T07:42:05.844646" level="INFO">Slept 10 seconds.</msg>
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-12T07:41:55.843502" elapsed="10.001243"/>
+</kw>
+<kw name="get ATT value">
+<return>
+<value>50</value>
+<status status="PASS" start="2026-01-12T07:42:05.845174" elapsed="0.000047"/>
+</return>
+<msg time="2026-01-12T07:42:05.845336" level="INFO">${ATT1_Value} = 50</msg>
+<var>${ATT1_Value}</var>
+<arg>ATT1</arg>
+<status status="PASS" start="2026-01-12T07:42:05.844956" elapsed="0.000407"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>get ATT1 value is ${ATT1_value}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:42:05.845497" elapsed="0.000307"/>
+</kw>
+<kw name="get ATT value">
+<return>
+<value>50</value>
+<status status="PASS" start="2026-01-12T07:42:05.846362" elapsed="0.000040"/>
+</return>
+<msg time="2026-01-12T07:42:05.846516" level="INFO">${ATT2_Value} = 50</msg>
+<var>${ATT2_Value}</var>
+<arg>ATT2</arg>
+<status status="PASS" start="2026-01-12T07:42:05.846132" elapsed="0.000411"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>get ATT2 value is ${ATT2_value}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:42:05.846650" elapsed="0.000319"/>
+</kw>
+<kw name="Check Agent status">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-12T07:42:05.847926" level="INFO">Agent : A8:C2:46:3D:39:68</msg>
+<arg>Agent : ${target_mac}</arg>
+<arg>INFO</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-12T07:42:05.847654" elapsed="0.000319"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>.</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:42:05.848084" elapsed="0.000249"/>
+</kw>
+<kw name="get mesh topology from ssh">
+<kw name="cli_ssh" owner="telnet_ssh_sample">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${DEVICES.${Device}.ip}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:42:05.849316" elapsed="0.000857"/>
+</kw>
+<kw name="Open Connection" owner="SSHLibrary">
+<arg>${DEVICES.${Device}.ip}</arg>
+<arg>timeout=60</arg>
+<arg>port=${DEVICES.${Device}.port}</arg>
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<status status="PASS" start="2026-01-12T07:42:05.850483" elapsed="0.001511"/>
+</kw>
+<kw name="Login" owner="SSHLibrary">
+<msg time="2026-01-12T07:42:05.853277" level="INFO">Logging into '192.168.1.1:22' as 'root'.</msg>
+<msg time="2026-01-12T07:42:07.215538" level="INFO">Read output: 
+
+BusyBox v1.36.1 (2025-10-23 08:03:14 UTC) built-in shell (ash)
+
+     MM           NM                    MMMMMMM          M       M
+   $MMMMM        MMMMM                MMMMMMMMMMM      MMM     MMM
+  MMMMMMMM     MM MMMMM.              MMMMM:MMMMMM:   MMMM   MMMMM
+MMMM= MMMMMM  MMM   MMMM       MMMMM   MMMM  MMMMMM   MMMM  MMMMM'
+MMMM=  MMMMM MMMM    MM       MMMMM    MMMM    MMMM   MMMMNMMMMM
+MMMM=   MMMM  MMMMM          MMMMM     MMMM    MMMM   MMMMMMMM
+MMMM=   MMMM   MMMMMM       MMMMM      MMMM    MMMM   MMMMMMMMM
+MMMM=   MMMM     MMMMM,    NMMMMMMMM   MMMM    MMMM   MMMMMMMMMMM
+MMMM=   MMMM      MMMMMM   MMMMMMMM    MMMM    MMMM   MMMM  MMMMMM
+MMMM=   MMMM   MM    MMMM    MMMM      MMMM    MMMM   MMMM    MMMM
+MMMM$ ,MMMMM  MMMMM  MMMM    MMM       MMMM   MMMMM   MMMM    MMMM
+  MMMMMMM:      MMMMMMM     M         MMMMMMMMMMMM  MMMMMMM MMMMMMM
+    MMMMMM       MMMMN     M           MMMMMMMMM      MMMM    MMMM
+     MMMM          M                    MMMMMMM        M       M
+       M
+ ---------------------------------------------------------------
+   For those about to rock... OpenWrt SNAPSHOT, 13.0.501.665
+ ---------------------------------------------------------------
+=== WARNING! =====================================
+There is no root password defined on this device!
+Use the "passwd" command to set up a new password
+in order to prevent unauthorized SSH logins.
+--------------------------------------------------
+root@WNRFQQ-112BE-998:~#</msg>
+<arg>${DEVICES.${Device}.user_name}</arg>
+<arg>${EMPTY}</arg>
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<status status="PASS" start="2026-01-12T07:42:05.852124" elapsed="1.363523"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Set Client Configuration" owner="SSHLibrary">
+<arg>prompt=${prompt}</arg>
+<doc>Update the `configuration` of the current connection.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.216286" elapsed="0.000198"/>
+</kw>
+<arg>'${prompt}'!=''</arg>
+<arg>SSHLibrary.Set Client Configuration</arg>
+<arg>prompt=${prompt}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.215828" elapsed="0.000720"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Set Client Configuration" owner="SSHLibrary">
+<arg>timeout=${timeout}</arg>
+<doc>Update the `configuration` of the current connection.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.217032" elapsed="0.000170"/>
+</kw>
+<arg>'${timeout}'!=''</arg>
+<arg>SSHLibrary.Set Client Configuration</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.216674" elapsed="0.000586"/>
+</kw>
+<kw name="Execute Command" owner="SSHLibrary">
+<msg time="2026-01-12T07:42:07.217540" level="INFO">Executing command 'cat /tmp/.mesh_topo_info'.</msg>
+<msg time="2026-01-12T07:42:07.253419" level="INFO">Command exited with return code 0.</msg>
+<msg time="2026-01-12T07:42:07.253591" level="INFO">${result} = { "LegacyDevices": [ { "Name": "GTK-GL552VW", "DefinedName": "", "IPv4": "192.168.1.108", "Interface": "eth1", "Mac": "38:D5:47:39:EE:19", "medtype": "ETHER" } ], "Name": "WNRFQQ-112BE-998", "DefinedN...</msg>
+<var>${result}</var>
+<arg>${Command}</arg>
+<arg>timeout=${timeout}</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.217370" elapsed="0.036250"/>
+</kw>
+<kw name="Close All Connections" owner="SSHLibrary">
+<doc>Closes all open connections.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.253792" elapsed="0.000334"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-12T07:42:07.254526" level="INFO">{ "LegacyDevices": [ { "Name": "GTK-GL552VW", "DefinedName": "", "IPv4": "192.168.1.108", "Interface": "eth1", "Mac": "38:D5:47:39:EE:19", "medtype": "ETHER" } ], "Name": "WNRFQQ-112BE-998", "DefinedName": "", "Mode": "Controller", "Mac": "A8:C2:46:3D:39:99", "IPv4": "192.168.1.1", "Upstream_device": "", "DB_entries": 1, "DB": [ { "Name": "WNRFQQ-112BE-968", "DefinedName": "", "Mode": "Agent", "Mac": "A8:C2:46:3D:39:68", "IPv4": "192.168.1.167", "Hops": 1, "Connect": [ { "ifname": "eth1", "DefinedName": "", "medtype": "ETHER", "assoc_mac": "A8:C2:46:3D:39:69", "rssi": "0", "channel": "18599", "messageID": 4992, "direct": "Yes", "legacyBridge": "Yes", "Role": "Agent" } ], "Upstream_device": "A8:C2:46:3D:39:99", "LegacyDevices": [ ] } ] }</msg>
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.254266" elapsed="0.000307"/>
+</kw>
+<return>
+<value>${result}</value>
+<status status="PASS" start="2026-01-12T07:42:07.254626" elapsed="0.000046"/>
+</return>
+<msg time="2026-01-12T07:42:07.254805" level="INFO">${ssh_result} = { "LegacyDevices": [ { "Name": "GTK-GL552VW", "DefinedName": "", "IPv4": "192.168.1.108", "Interface": "eth1", "Mac": "38:D5:47:39:EE:19", "medtype": "ETHER" } ], "Name": "WNRFQQ-112BE-998", "DefinedN...</msg>
+<var>${ssh_result}</var>
+<arg>DUT_LAN_SSH</arg>
+<arg>cat /tmp/.mesh_topo_info</arg>
+<arg>60</arg>
+<arg>root@WNRFQQ-112BE</arg>
+<status status="PASS" start="2026-01-12T07:42:05.849072" elapsed="1.405760"/>
+</kw>
+<return>
+<value>${ssh_result}</value>
+<status status="PASS" start="2026-01-12T07:42:07.254894" elapsed="0.000031"/>
+</return>
+<msg time="2026-01-12T07:42:07.255168" level="INFO">${mesh_topology_json} = { "LegacyDevices": [ { "Name": "GTK-GL552VW", "DefinedName": "", "IPv4": "192.168.1.108", "Interface": "eth1", "Mac": "38:D5:47:39:EE:19", "medtype": "ETHER" } ], "Name": "WNRFQQ-112BE-998", "DefinedN...</msg>
+<var>${mesh_topology_json}</var>
+<doc>Login to DUT and cat /tmp/.mesh_topo_info</doc>
+<status status="PASS" start="2026-01-12T07:42:05.848728" elapsed="1.406470"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-01-12T07:42:07.255721" level="INFO">${data} = {'LegacyDevices': [{'Name': 'GTK-GL552VW', 'DefinedName': '', 'IPv4': '192.168.1.108', 'Interface': 'eth1', 'Mac': '38:D5:47:39:EE:19', 'medtype': 'ETHER'}], 'Name': 'WNRFQQ-112BE-998', 'DefinedName':...</msg>
+<var>${data}</var>
+<arg>json.loads('''${mesh_topology_json}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.255340" elapsed="0.000411"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-01-12T07:42:07.256301" level="INFO">${result} = ['A8:C2:46:3D:39:99']</msg>
+<var>${result}</var>
+<arg>[item['Upstream_device'] for item in $data['DB'] if item['Mac'] == '${target_mac}']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.255872" elapsed="0.000459"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Get From List" owner="Collections">
+<arg>${result}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.256720" elapsed="0.000156"/>
+</kw>
+<msg time="2026-01-12T07:42:07.257015" level="INFO">${status} = PASS</msg>
+<msg time="2026-01-12T07:42:07.257058" level="INFO">${value} = A8:C2:46:3D:39:99</msg>
+<var>${status}</var>
+<var>${value}</var>
+<arg>Get From List</arg>
+<arg>${result}</arg>
+<arg>0</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.256456" elapsed="0.000626"/>
+</kw>
+<if>
+<branch type="IF" condition="'${status}' == 'PASS'">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-01-12T07:42:07.257615" level="INFO">${upstream} = A8:C2:46:3D:39:99</msg>
+<var>${upstream}</var>
+<arg>${value}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.257358" elapsed="0.000285"/>
+</kw>
+<status status="PASS" start="2026-01-12T07:42:07.257185" elapsed="0.000503"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${upstream}</var>
+<arg>FAIL</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-01-12T07:42:07.257830" elapsed="0.000052"/>
+</kw>
+<status status="NOT RUN" start="2026-01-12T07:42:07.257728" elapsed="0.000194"/>
+</branch>
+<status status="PASS" start="2026-01-12T07:42:07.257163" elapsed="0.000793"/>
+</if>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-01-12T07:42:10.259155" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-01-12T07:42:07.258046" elapsed="3.001210"/>
+</kw>
+<return>
+<value>${upstream}</value>
+<status status="PASS" start="2026-01-12T07:42:10.259333" elapsed="0.000052"/>
+</return>
+<msg time="2026-01-12T07:42:10.259551" level="INFO">${agent2_upstream} = A8:C2:46:3D:39:99</msg>
+<var>${agent2_upstream}</var>
+<arg>A8:C2:46:3D:39:68</arg>
+<doc>1.Input Agent mac
+2. Output Connect mac band
+example:
+Check Agent status  E4:C7:67:8A:8F:36
+return  10:7C:61:C0:BF:E2</doc>
+<status status="PASS" start="2026-01-12T07:42:05.847395" elapsed="4.412184"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Upstream is: ${agent1_upstream}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:42:10.259723" elapsed="0.000393"/>
+</kw>
+<if>
+<branch type="IF" condition="'${agent2_upstream}' == '${agent1_upstream}'">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>"roaming success"</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-01-12T07:42:10.260676" elapsed="0.000345"/>
+</kw>
+<status status="PASS" start="2026-01-12T07:42:10.260293" elapsed="0.000814"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>"roaming fail"</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-01-12T07:42:10.261371" elapsed="0.000026"/>
+</kw>
+<status status="NOT RUN" start="2026-01-12T07:42:10.261196" elapsed="0.000237"/>
+</branch>
+<status status="PASS" start="2026-01-12T07:42:10.260255" elapsed="0.001210"/>
+</if>
+<tag>mesh_test</tag>
+<doc>1.get agent upstream
+2.get/set att1
+3.get/set att2
+4.Wait 60s
+5.Confirm ATT1/2 value
+6.Confirm agent upstream
+7.Return roaming status</doc>
+<status status="PASS" start="2026-01-12T07:41:51.441863" elapsed="18.819650"/>
+</kw>
+<doc>1.Start capture wifi pack
+2.Agent roaming
+3.Stop capture wifi pack
+4.Confirm wifi roaming pack</doc>
+<tag>mesh roaming test</tag>
+<status status="PASS" start="2026-01-12T07:41:51.440516" elapsed="18.821130"/>
+</test>
+<status status="PASS" start="2026-01-12T07:41:51.126764" elapsed="19.135453"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">mesh roaming test</stat>
+</tag>
+<suite>
+<stat name="01-Mesh pre set" id="s1" pass="1" fail="0" skip="0">01-Mesh pre set</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,7 @@
+進ssh後下
+# emt
+@ td s2
+這是topology原始資料
+
+cat /tmp/.mesh_topo_info
+這是處理成json的資料

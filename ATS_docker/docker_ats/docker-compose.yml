@@ -1,0 +1,36 @@
+services:
+  robot:
+    build: .
+    image: env-ats:v1
+    container_name: env-ats
+    hostname: dockerimage-ats
+    privileged: true
+    networks:
+      ats_net_dut_lan:
+        ipv4_address: 192.168.1.2
+        mac_address: ${env_ats_lan_mac}
+      ats_net_internet:
+        mac_address: ${env_ats_inet_mac}
+    tty: true
+    environment:
+      - DISPLAY=:99
+    volumes:
+      - ./tests:/workspace/tests
+      - ../robot_script:/workspace/tests/robot_script      
+      - ~/.ssh:/root/.ssh
+    entrypoint: ["/workspace/tests/fix_interface_name_ats.sh"]
+    command: ["sh", "-c", "Xvfb :99 -screen 0 1280x1024x24 & x11vnc -display :99 -forever -shared -rfbport 5900 & /bin/bash"]
+    #command: ["/bin/bash"]
+
+networks:
+  ats_net_dut_lan:
+    driver: macvlan
+    driver_opts:
+      parent: ${env_lan_interface}
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+  ats_net_internet:
+    driver: macvlan
+    driver_opts:
+      parent: ${env_ats_interface}

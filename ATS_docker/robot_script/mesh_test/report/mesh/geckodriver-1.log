@@ -1,0 +1,20 @@
+1767782989003	geckodriver	INFO	Listening on 127.0.0.1:54499
+1767782989011	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" "/usr/bin/firefox" "--m ... te" "--remote-debugging-port" "41011" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileINWymy"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1767782990547	Marionette	INFO	Marionette enabled
+1767782991240	Marionette	INFO	Listening on port 35943
+WebDriver BiDi listening on ws://127.0.0.1:41011
+[Parent 198, Main Thread] WARNING: Failed to create DBus proxy for org.a11y.Bus: Failed to execute child process “dbus-launch” (No such file or directory)
+: 'glib warning', file /build/firefox-I6agFH/firefox-146.0+build1/toolkit/xre/nsSigHandlers.cpp:201
+
+** (firefox:198): WARNING **: 10:49:51.257: Failed to create DBus proxy for org.a11y.Bus: Failed to execute child process “dbus-launch” (No such file or directory)
+
+Read port: 35943
+1767782991391	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1767782994638	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+console.error: (new TypeError("can't access property \"get\", linkMap is undefined", "resource://gre/modules/NewTabUtils.sys.mjs", 1715))
+console.warn: BackupService: "There was an error while trying to get the Document's directory" [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIProperties.get]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource:///modules/backup/BackupService.sys.mjs :: get docsDirFolderPath :: line 1221"  data: no]
+console.warn: BackupService: "There was an error while trying to get the Document's directory" [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIProperties.get]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource:///modules/backup/BackupService.sys.mjs :: get docsDirFolderPath :: line 1221"  data: no]
+JavaScript error: resource:///modules/backup/BackupService.sys.mjs, line 3716: NotAllowedError: PathUtils.join: PathUtils does not support empty paths
+console.warn: LoginRecipes: "Falling back to a synchronous message for: http://192.168.1.1."

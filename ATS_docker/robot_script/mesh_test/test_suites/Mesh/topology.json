@@ -1,0 +1,81 @@
+{
+  "LegacyDevices": [
+    {
+      "Name": "DESKTOP-JK2H6JQ",
+      "DefinedName": "",
+      "IPv4": "192.168.99.118",
+      "Interface": "eth1.3",
+      "Mac": "98:E7:F4:4F:A8:B6",
+      "medtype": "ETHER",
+      "Upstream_device": "A8:C2:46:1E:A7:C0"
+    },
+    {
+      "Name": "DESKTOP-5CI1I6N",
+      "DefinedName": "",
+      "IPv4": "192.168.99.130",
+      "Interface": "mld2",
+      "Mac": "10:3D:1C:35:23:70",
+      "medtype": "WLAN5G",
+      "Rssi": "-56",
+      "channel": "112",
+      "Upstream_device": "A8:C2:46:1E:A7:C0"
+    }
+  ],
+  "Name": "WREQ-130BE-7BF",
+  "DefinedName": "",
+  "Mode": "Controller",
+  "Mac": "A8:C2:46:1E:A7:C0",
+  "IPv4": "192.168.99.1",
+  "Upstream_device": "",
+  "DB_entries": 2,
+  "DB": [
+    {
+      "Name": "WREQ-130BE-FCC",
+      "DefinedName": "",
+      "Mode": "Agent",
+      "Mac": "4C:BA:7D:02:8F:CD",
+      "IPv4": "192.168.99.191",
+      "Hops": 1,
+      "Connect": [
+        {
+          "ifname": "eth1.1",
+          "DefinedName": "",
+          "medtype": "ETHER",
+          "assoc_mac": "4C:BA:7D:02:8F:CD",
+          "Rssi": "0",
+          "channel": "255",
+          "messageID": 22497,
+          "direct": "Yes",
+          "legacyBridge": "Yes",
+          "Role": "Agent"
+        }
+      ],
+      "Upstream_device": "A8:C2:46:1E:A7:C0",
+      "LegacyDevices": []
+    },
+    {
+      "Name": "WREQ-130BE-0F3",
+      "DefinedName": "",
+      "Mode": "Agent",
+      "Mac": "4C:BA:7D:02:90:F4",
+      "IPv4": "192.168.99.179",
+      "Hops": 1,
+      "Connect": [
+        {
+          "ifname": "eth1.1",
+          "DefinedName": "",
+          "medtype": "ETHER",
+          "assoc_mac": "4C:BA:7D:02:90:F4",
+          "Rssi": "",
+          "channel": "255",
+          "messageID": 22498,
+          "direct": "Yes",
+          "legacyBridge": "Yes",
+          "Role": "Agent"
+        }
+      ],
+      "Upstream_device": "4C:BA:7D:02:8F:CD",
+      "LegacyDevices": []
+    }
+  ]
+}

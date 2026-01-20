@@ -1,0 +1,74 @@
+DEVICES:
+  wifi_client:
+    ip: 172.16.0.18
+    timeout: 60
+    type: linux
+    protocol: telnet
+    port: 23
+    user_name: gemtek
+    password: gemtek
+    login_prompt: 'login:'
+    password_prompt: 'Password:'
+    prompt: gemtek@gemtek
+    int: wlo1
+    int_5G: wlo1
+    interface: wlo1
+    hostname: lab-HP
+    int_2_4g: wlo1
+    MAC: d4:f3:2d:c7:dd:1e
+
+  DUT_LAN_SSH:
+    ip: 192.168.1.1
+    timeout: 60
+    type: linux
+    protocol: ssh
+    port: 22
+    user: root
+    user_name: root
+    password: 
+    #prompt: ['vagrant\@dual-wifi-client2\:\~\$']
+    prompt: ['root@dockerimage-ats:/workspace#']
+    login_prompt: 
+    password_prompt:
+    
+  DUT_LAN_Telnet:
+    #ip: 10.5.182.195
+    ip: 192.168.1.1
+    timeout: 60
+    type: linux
+    protocol: telnet
+    port: 23
+    user: root
+    password: 5/4jp6t03qup3
+    #prompt: ['vagrant\@dual-wifi-client2\:\~\$']
+    prompt: ['root@']
+    #prompt: ['vagrant\@thomas-VPCEB37FW\:\~\$']
+
+  lanhost:
+   ip: 192.168.100.20
+   timeout: 60
+   type: linux
+   protocol: telnet
+   port: 23
+   user_name: root
+   password: password
+   login_prompt: login
+   password_prompt: Password
+   root_password: password
+   prompt: root@dockerimage-lan
+   interface: eth-lan
+
+  wanhost:
+    ip: 172.16.0.71
+    timeout: 60
+    type: linux
+    protocol: telnet
+    port: 23
+    user_name: vagrant
+    password: vagrant
+    login_prompt: login
+    password_prompt: Password
+    prompt: vagrant@WAN-host
+    interface: enp6s0
+    interface_Monitor: enp5s0
+    MAC: 00:0a:cd:47:36:a3
